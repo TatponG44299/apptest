@@ -27,3 +27,4 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
+// ที่เหลือก็เอา flutter เชือมกับ Firebase เอา แค่นั้น 

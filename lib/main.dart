@@ -4,11 +4,11 @@ import 'package:giveandgetblood/screensUse/login.dart';
 
 
 
-//เมื่อโปรเจ็คทงาน Constructor Method หรือเม็ธตอดหลักทำการ call object จากคลาสตัวล่าง
+
 void main() async {
   // these 2 lines
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();//ติดตั้ง pugin หน้า pubspec.yaml ที่ชื่อ  firebase_core: ^0.5.0+1 firebase_auth: ^0.18.1+2 
+  await Firebase.initializeApp();//                   ก่อนค่อยใส่ 2 บรรทัดนี้
   //
   runApp(MyApp());
 }

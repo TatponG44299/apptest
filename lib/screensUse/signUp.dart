@@ -10,7 +10,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  //field
+  
+  //ประกาศตัวแปลให้เก็บค่าที่เรากรอกใน textfield
   String email, password, confpassword;
 
   @override
@@ -34,7 +35,7 @@ class _SignUpState extends State<SignUp> {
                     child: Container(
                   margin: EdgeInsets.only(right: 20, left: 10),
                   child: TextField(
-                    onChanged: (value) => email = value.trim(),
+                    onChanged: (value) => email = value.trim(), //ค่าที่เรากรอกได้เอาไปเก็บในตัวแปล
                     decoration: InputDecoration(hintText: 'Email'),
                   ),
                 ))
@@ -96,7 +97,7 @@ class _SignUpState extends State<SignUp> {
               borderRadius: BorderRadius.circular(10),
               child: Container(
                 height: 60,
-                child: RaisedButton(
+                child: RaisedButton( //ปุ่มกด ใส่เงือนไขเอง
                   onPressed: () {
                     if (password == null ||
                         password.isEmpty ||
@@ -104,13 +105,13 @@ class _SignUpState extends State<SignUp> {
                         email.isEmpty ||
                         confpassword == null ||
                         confpassword.isEmpty) {
-                      normalDialog(context, 'Please fill in all fields.');
+                      normalDialog(context, 'Please fill in all fields.'); // normalDialog ดึงมาจากหน้าอื่น สร้างคลาสแยกไว้ ตรง nuility
                     } else if (password != confpassword ||
                         confpassword != password &&
                         password.length >= 6) {
                       normalDialog(context, 'Password mismatch.');
                     } else {
-                      checksighin();
+                      checksighin(); //เรียกใช้ฟังค์ชันที่เชื่อมต่อ Firebase
                     }
                   },
                   color: Colors.orange[900],
@@ -130,16 +131,17 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
+    //ฟังค์ชันเชือม Firebase ของ SignUp ตอนสมัคร
   Future<void> checksighin() async {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     await firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password)
         .then((user) {
       print("Sign up user successful.");
-      MaterialPageRoute materialPageRoute =
-          MaterialPageRoute(builder: (BuildContext context) => Login());
-      Navigator.of(context).pushAndRemoveUntil(
-          materialPageRoute, (Route<dynamic> route) => false);
+      MaterialPageRoute materialPageRoute =                               //  4 บรรทัดนี้  เวลาสมัครเสร็จจะให้กลับไปหน้า Login ใหม่ 
+          MaterialPageRoute(builder: (BuildContext context) => Login());  //
+      Navigator.of(context).pushAndRemoveUntil(                           //
+          materialPageRoute, (Route<dynamic> route) => false);            //
     }).catchError((error) {
       normalDialog(context, 'กรุณากรอกข้อมูลใหม่');
     });
@@ -157,8 +159,8 @@ class BlackButtonWidget extends StatelessWidget {
       height: 200,
       decoration: BoxDecoration(
           image: DecorationImage(
-              fit: BoxFit.cover, image: AssetImage('images/Ib.jpg'))),
-      child: Positioned(
+              fit: BoxFit.cover, image: AssetImage('images/Ib.jpg'))),    // รูปภาพต้องเอาไปใส่หน้้า pubspec.yaml ก่อนนะ
+      child: Positioned(                                                  //  ข้างซ้ายล่างอ่ะ บรรทัด 57 อ่ะ
           child: Stack(
         children: <Widget>[
           Positioned(
