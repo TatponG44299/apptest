@@ -159,7 +159,7 @@ class BlackButtonWidget extends StatelessWidget {
       height: 200,
       decoration: BoxDecoration(
           image: DecorationImage(
-              fit: BoxFit.cover, image: AssetImage('images//naruto 9.jpg'))),    // รูปภาพต้องเอาไปใส่หน้้า pubspec.yaml ก่อนนะ
+              fit: BoxFit.cover, image: AssetImage('images/naruto.jpg'))),    // รูปภาพต้องเอาไปใส่หน้้า pubspec.yaml ก่อนนะ
       child: Positioned(                                                  //  ข้างซ้ายล่างอ่ะ บรรทัด 57 อ่ะ
           child: Stack(
         children: <Widget>[
