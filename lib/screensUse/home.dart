@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:giveandgetblood/screensUse/login.dart';
+
+import 'login.dart';
+
 
 class Homepage extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orangeAccent[100],
       appBar: AppBar(
         title: Text('Fox Home page', style: TextStyle(color: Colors.white)),
         centerTitle: true,
